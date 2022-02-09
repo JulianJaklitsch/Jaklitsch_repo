@@ -1,0 +1,56 @@
+@startuml
+
+left to right direction
+
+class Team{
+teamName: String
+creationDate: Date
+loc: String
+}
+
+class Spieler{
+position: String
+}
+
+class Schiedsrichter{
+
+gradutionDate: Date
+license: String
+}
+
+class Spiel{
+dateTime: String
+}
+class Person{
+    SVNr: int
+    name: String
+    playerAdress: String
+    birthDate: Date
+}
+Person <|-- Spieler
+Person <|-- Schiedsrichter
+
+class Goals
+
+Goals "*" -- "1" Spieler
+Goals "*" -- "1" Spiel
+
+class Championship{
+champNO: int
+champNAME: String
+champStart: Date
+champEnd: Date
+}
+
+Championship "1" -- "*" Spiel
+Spiel "*" -- "1" Stadion
+
+class Stadion{
+stadionLOC: String
+}
+
+Team   "1" -- "*"Spieler
+Spiel  "*" -- "2" Team
+Spiel  "*" -- "1" Schiedsrichter
+
+@enduml
